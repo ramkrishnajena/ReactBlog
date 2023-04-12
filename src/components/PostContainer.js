@@ -12,21 +12,22 @@ const PostContainer = () => {
   const [searchPost, setSearchPost] = useState([]);
   const dispatch = useDispatch();
   const select = useSelector((data) => data);
-  const head = { h: <h1>Ram</h1> };
+
   const handleSearch = (e) => {
     setSearchPost(filterData(e.target.value, postList));
   };
   async function getAllPosts() {
     try {
       const posts = await allPosts();
-      dispatch(addAllPost(posts.map((doc) => ({ ...doc.data(), id: doc.id }))));
-      setPostList(select.blogs?.posts);
-      setSearchPost(posts);
+      const postData = posts.map((doc) => ({ ...doc.data(), id: doc.id }));
+      setPostList(postData);
+      setSearchPost(postData);
+      dispatch(addAllPost(postData));
     } catch (err) {
       console.log(err);
     }
   }
-  console.log(postList);
+
   useEffect(() => {
     getAllPosts();
   }, []);
@@ -51,7 +52,7 @@ const PostContainer = () => {
           className='h-10 w-96 border border-secondary rounded-lg font-roboto px-3 mb-4'
           onChange={handleSearch}
         />
-        {Object.values(head).map((a) => a)}
+
         <div className='flex flex-wrap justify-center'>
           {searchPost.map((data) => (
             <Post key={data.id} {...data} />
