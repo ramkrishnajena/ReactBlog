@@ -20,7 +20,7 @@ const PostContainer = () => {
     try {
       const posts = await allPosts();
       const postData = posts.map((doc) => ({ ...doc.data(), id: doc.id }));
-      setPostList(postData);
+      // setPostList(postData);
       setSearchPost(postData);
       dispatch(addAllPost(postData));
     } catch (err) {
@@ -37,7 +37,7 @@ const PostContainer = () => {
       <div className='flex flex-wrap justify-center'>
         {Array(6)
           .fill("")
-          .map((i) => (
+          .map((data, i) => (
             <Shimmer key={i} />
           ))}
       </div>

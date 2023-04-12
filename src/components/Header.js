@@ -18,7 +18,7 @@ const Header = () => {
   }, [subscribe]);
   return (
     <div className='flex items-center justify-between flex-wrap px-10 py-5 bg-primary text-white sm:justify-center lg:justify-between'>
-      <div className='text-2xl font-roboto font-bold tracking-wide sm:text-xl'>
+      <div className='text-2xl font-roboto font-bold tracking-wide sm:text-xl sm:pb-2'>
         Ramkrishna Jena
       </div>
       <nav className='flex items-center'>
