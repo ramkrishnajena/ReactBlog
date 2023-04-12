@@ -23,11 +23,12 @@ const BlogEditor = () => {
   });
   const [message, setMessage] = useState();
   const url = useParams();
+  console.log(post);
 
   const editPost = async (url) => {
     const postData = (await getPost(url)).data();
     const { title, description, content, image } = postData;
-    setPost({ ...post, title, description, content });
+    setPost({ ...post, title, description, content, image });
   };
   const handleChange = (e) => {
     const name = e.target.name;

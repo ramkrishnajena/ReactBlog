@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { lazy, Suspense } from "react";
 import Body from "./components/Body";
 import "./app.css";
 import { createBrowserRouter, Link, RouterProvider } from "react-router-dom";
@@ -7,12 +7,12 @@ import Signup from "./components/Signup";
 import PostContainer from "./components/PostContainer";
 import { Provider } from "react-redux";
 import store from "./utils/store/store";
-import Dashboard from "./components/admin/Dashboard";
-import { addAllPost } from "./utils/store/blogSlice";
-import BlogEditor from "./components/admin/BlogEditor";
-import Header from "./components/Header";
 import SinglePost from "./components/SinglePost";
 import ErrorPage from "./components/ErrorPage";
+import Shimmer from "./components/Shimmer";
+
+const Dashboard = lazy(() => import("./components/admin/Dashboard"));
+const BlogEditor = lazy(() => import("./components/admin/BlogEditor"));
 
 const BodyRouter = createBrowserRouter([
   {
@@ -42,7 +42,11 @@ const BodyRouter = createBrowserRouter([
       },
       {
         path: "admin",
-        element: <Dashboard />,
+        element: (
+          <Suspense fallback={<Shimmer />}>
+            <Dashboard />
+          </Suspense>
+        ),
         children: [
           {
             path: "/admin",
@@ -50,11 +54,19 @@ const BodyRouter = createBrowserRouter([
           },
           {
             path: "edit",
-            element: <BlogEditor />,
+            element: (
+              <Suspense fallback={<Shimmer />}>
+                <BlogEditor />
+              </Suspense>
+            ),
           },
           {
             path: "edit/:id",
-            element: <BlogEditor />,
+            element: (
+              <Suspense fallback={<Shimmer />}>
+                <BlogEditor />
+              </Suspense>
+            ),
           },
         ],
       },

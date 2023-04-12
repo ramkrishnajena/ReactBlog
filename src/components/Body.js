@@ -10,7 +10,7 @@ const Body = () => {
   return (
     <>
       <Header />
-      <div className='flex items-center h-5/6 w-full my-6'>
+      <div className='flex items-center h-5/6 max-h-fit w-full my-6'>
         <Outlet />
       </div>
       <Footer />

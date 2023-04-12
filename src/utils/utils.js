@@ -15,3 +15,8 @@ export const isValidDetails = (user, { email, password }) => {
   const userData = data[0];
   return { log, userData };
 };
+
+export const filterData = (input, data) => {
+  const title = input.toLowerCase();
+  return data.filter((post) => post?.title.toLowerCase().includes(title));
+};
