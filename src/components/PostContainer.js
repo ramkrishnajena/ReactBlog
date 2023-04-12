@@ -43,26 +43,24 @@ const PostContainer = () => {
       </div>
     </div>
   ) : (
-    <>
-      <div className='w-full flex flex-col justify-center items-center'>
-        <input
-          type='text'
-          name='search'
-          placeholder='Search'
-          className='h-10 w-96 border border-secondary rounded-lg font-roboto px-3 mb-4'
-          onChange={handleSearch}
-        />
+    <div className='w-full flex flex-col justify-center items-center'>
+      <input
+        type='text'
+        name='search'
+        placeholder='Search'
+        className='h-10 w-96 border border-secondary rounded-lg font-roboto px-3 mb-4'
+        onChange={handleSearch}
+      />
 
-        <div className='flex flex-wrap justify-center'>
-          {searchPost.map((data) => (
-            <Post key={data.id} {...data} />
-          ))}
-          {!searchPost.length && (
-            <p className='text-xl font-poppins'>No Results Found</p>
-          )}
-        </div>
+      <div className='flex flex-wrap justify-center'>
+        {searchPost.map((data) => (
+          <Post key={data.id} {...data} />
+        ))}
+        {!searchPost.length && (
+          <p className='text-xl font-poppins'>No Results Found</p>
+        )}
       </div>
-    </>
+    </div>
   );
 };
 
