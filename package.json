@@ -1,11 +1,10 @@
 {
   "name": "Ramkrishna Jena - Blog",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "This blog is created using React,redux, and firebase",
   "scripts": {
     "start": "parcel index.html",
-    "build": "purcel build index.html"
+    "build": "parcel build index.html"
   },
   "keywords": [],
   "author": "",

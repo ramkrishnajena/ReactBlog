@@ -15,14 +15,16 @@ const {
 } = process.env;
 const firebaseConfig = {
   apiKey,
-  authDomain: "ramkrishnajena-blog.firebaseapp.com",
-  databaseURL: "https://ramkrishnajena-blog-default-rtdb.firebaseio.com",
-  projectId: "ramkrishnajena-blog",
-  storageBucket: "ramkrishnajena-blog.appspot.com",
-  messagingSenderId: "718574170125",
+  authDomain,
+  databaseURL,
+  projectId,
+  storageBucket,
+  messagingSenderId,
   appId,
   measurementId,
 };
+
+console.log(process.env);
 
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);

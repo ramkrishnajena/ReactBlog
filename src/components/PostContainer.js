@@ -20,7 +20,7 @@ const PostContainer = () => {
     try {
       const posts = await allPosts();
       const postData = posts.map((doc) => ({ ...doc.data(), id: doc.id }));
-      // setPostList(postData);
+      setPostList(postData);
       setSearchPost(postData);
       dispatch(addAllPost(postData));
     } catch (err) {
@@ -43,7 +43,7 @@ const PostContainer = () => {
       </div>
     </div>
   ) : (
-    <div className='w-full flex flex-col justify-center items-center'>
+    <div className='w-full flex flex-col justify-center items-center '>
       <input
         type='text'
         name='search'
