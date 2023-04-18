@@ -1,7 +1,7 @@
 import React, { lazy, Suspense } from "react";
 import Body from "./Layout/Body";
 import "./app.css";
-import { createBrowserRouter, Link, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import PostContainer from "./Layout/PostContainer";
