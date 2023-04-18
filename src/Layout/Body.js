@@ -1,12 +1,13 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
-import Footer from "./Footer";
-import Header from "./Header";
+import Footer from "../components/Footer";
+import Header from "../components/Header";
 import PostContainer from "./PostContainer";
 import "../utils/firebase-config.js";
 import { useSelector } from "react-redux";
 
 const Body = () => {
+  console.log(process);
   return (
     <>
       <Header />

@@ -10,7 +10,7 @@ const Dashboard = () => {
     return <Navigate to='/' replace={true} />;
   }
   return (
-    <div className='flex w-full'>
+    <div className='flex flex-wrap w-full'>
       <Link
         to='edit'
         className='bg-primary h-10 flex items-center p-3 rounded-r-full text-white font-roboto'

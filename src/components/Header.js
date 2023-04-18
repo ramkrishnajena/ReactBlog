@@ -21,7 +21,7 @@ const Header = () => {
       <div className='text-2xl font-roboto font-bold tracking-wide sm:text-xl sm:pb-2'>
         Ramkrishna Jena
       </div>
-      <nav className='flex items-center'>
+      <nav className='flex flex-wrap sm:justify-center items-center'>
         <ul className='flex gap-4 items-center font-poppins font-semibold uppercase'>
           <Link to='/'>
             <li className='cursor-pointer hover:border-b-2 border-b-third'>
@@ -34,28 +34,28 @@ const Header = () => {
             </li>
           </Link>
         </ul>
-        <div className=' flex items-center ml-5'>
+        <div className=' flex items-center lg:ml-5 sm:ml-0 sm:mt-2 lg:mt-0'>
           {!login ? (
-            <Link to='/login'>
+            <Link to='login'>
               <button className='border rounded-l-lg py-1 px-4 font-medium (hover:bg-secondary font-white) '>
                 Login
               </button>
             </Link>
           ) : (
-            <Link to='/admin'>
+            <Link to='admin'>
               <button className='border rounded-l-lg py-1 px-4 font-medium hover:bg-secondary font-white'>
                 Dashboard
               </button>
             </Link>
           )}
           {!login ? (
-            <Link to='/signup'>
+            <Link to='signup'>
               <button className=' border rounded-r-lg py-1 px-4 font-medium hover:bg-secondary font-white'>
                 Signup
               </button>
             </Link>
           ) : (
-            <Link to='/login'>
+            <Link to='login'>
               <button
                 className=' border rounded-r-lg py-1 px-4 font-medium hover:bg-secondary font-white'
                 onClick={handleLogout}

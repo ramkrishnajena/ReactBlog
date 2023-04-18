@@ -18,7 +18,7 @@ const Login = () => {
     setUserDetails((data) => ({ ...data, [e.target.name]: e.target.value }));
   };
 
-  const validateUser = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const data = await allUsers();
@@ -30,9 +30,7 @@ const Login = () => {
       console.log(err);
     }
   };
-  const handleSubmit = (e) => {
-    e.preventDefault();
-  };
+
   if (user) {
     return <Navigate to='/admin' replace={true} />;
   }
@@ -42,7 +40,7 @@ const Login = () => {
         <h2 className='font-poppins text-2xl'>Login</h2>
         <form
           className='flex flex-col items-center w-56'
-          onSubmit={validateUser}
+          onSubmit={handleSubmit}
         >
           <input
             type='email'
