@@ -9,7 +9,6 @@ const Post = ({
   title,
   description,
   image,
-  content,
   author,
   publishDate,
   published,
@@ -29,16 +28,18 @@ const Post = ({
     return null;
   }
   return (
-    <div className='flex flex-col border p-2 shadow-lg mx-5 mb-5 rounded-lg sm:w-74 sm:min-h-96 lg:h-min lg:w-96'>
+    <div className='flex flex-col border p-2 shadow-lg mx-5 mb-5 rounded-lg sm:w-74 sm:min-h-96  lg:h-3/3 lg:w-96'>
       <img
         src={image}
         alt={image}
         className='w-full h-2/5 border border-b-secondary rounded-lg cursor-pointer transition hover:scale-110  hover:delay-200'
       />
-      <h3 className='h-2/5 text-2xl text-center pt-3 font-lato hover:underline cursor-pointer transition'>
-        {title?.substring(0, 60)}
-        {title?.length > 60 && "..."}
-      </h3>
+      <Link to={"/" + id}>
+        <h3 className='h-2/5 text-2xl text-center pt-3 font-lato hover:underline cursor-pointer transition'>
+          {title?.substring(0, 60)}
+          {title?.length > 60 && "..."}
+        </h3>
+      </Link>
       <p className='h-2/5 text-sm text-center pb-3 font-poppins text-gray-500'>
         {description?.substring(0, 150)}....
       </p>

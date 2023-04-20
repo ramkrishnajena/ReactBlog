@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { allUsers } from "../services/createUser.service";
@@ -23,7 +23,6 @@ const Login = () => {
     try {
       const data = await allUsers();
       const user = isValidDetails(data, userDetails);
-      console.log(user);
       dispatch(loggedInUser(user));
       setUser(subscribe);
     } catch (err) {
@@ -36,7 +35,7 @@ const Login = () => {
   }
   return (
     <div className='flex justify-center w-screen'>
-      <div className='flex justify-center items-center flex-col h-80 w-2/5 my-5 bg-white shadow-md'>
+      <div className='flex justify-center items-center flex-col h-80 lg:w-2/5 sm:w-4/5 my-5 bg-white drop-shadow-xl'>
         <h2 className='font-poppins text-2xl'>Login</h2>
         <form
           className='flex flex-col items-center w-56'

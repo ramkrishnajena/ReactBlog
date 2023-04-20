@@ -20,6 +20,7 @@ const authUser = async ({ email }) => {
   const auth = await doc(UsersCollection, email);
   return getDoc(auth);
 };
+
 const addUser = async (user) => {
   const addPost = await addDoc(UsersCollection, user);
 };

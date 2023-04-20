@@ -13,7 +13,7 @@ const Dashboard = () => {
     <div className='flex flex-wrap w-full'>
       <Link
         to='edit'
-        className='bg-primary h-10 flex items-center p-3 rounded-r-full text-white font-roboto'
+        className='bg-primary h-10 mb-2 flex items-center p-3 rounded-r-full text-white font-roboto'
       >
         Add
       </Link>

@@ -7,7 +7,6 @@ import "../utils/firebase-config.js";
 import { useSelector } from "react-redux";
 
 const Body = () => {
-  console.log(process);
   return (
     <>
       <Header />
