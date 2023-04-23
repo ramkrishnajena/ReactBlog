@@ -2,7 +2,6 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { deletePost } from "../services/createPost.service";
 import { Link } from "react-router-dom";
-import { useEffect } from "react";
 import rightArrow from "../assets/right_arrow.svg";
 
 const Post = ({
@@ -45,7 +44,7 @@ const Post = ({
       </p>
       <div className='flex flex-wrap justify-between pb-2'>
         <p className='text-sm font-poppins text-right text-primary'>
-          {publishDate.slice(0, 10)}
+          {publishDate?.slice(0, 10)}
         </p>
         <p className='text-sm font-poppins text-right text-primary'>{author}</p>
       </div>

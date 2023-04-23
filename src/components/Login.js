@@ -4,7 +4,7 @@ import { useState } from "react";
 import { allUsers } from "../services/createUser.service";
 import { loggedInUser } from "../utils/store/userSlice";
 import { isValidDetails } from "../utils/utils";
-import { Navigate } from "react-router-dom";
+import { Navigate, Link } from "react-router-dom";
 
 const Login = () => {
   const [userDetails, setUserDetails] = useState({
@@ -34,7 +34,7 @@ const Login = () => {
     return <Navigate to='/admin' replace={true} />;
   }
   return (
-    <div className='flex justify-center w-screen'>
+    <div className='flex flex-col items-center justify-center w-screen'>
       <div className='flex justify-center items-center flex-col h-80 lg:w-2/5 sm:w-4/5 my-5 bg-white drop-shadow-xl'>
         <h2 className='font-poppins text-2xl'>Login</h2>
         <form
@@ -62,6 +62,12 @@ const Login = () => {
           </button>
         </form>
       </div>
+      <p className='font-sans mt-5'>
+        Don't have an Account?
+        <Link to='/signup' className=' pl-5 underline text-gray-700'>
+          Signup
+        </Link>
+      </p>
     </div>
   );
 };

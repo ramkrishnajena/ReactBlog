@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+
 export const checkUniqueEmail = (dbUsers, user) => {
   const select = dbUsers.filter((data) => {
     return data.email === user.email;
