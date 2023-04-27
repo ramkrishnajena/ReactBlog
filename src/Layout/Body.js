@@ -1,12 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Outlet } from "react-router-dom";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
-import PostContainer from "./PostContainer";
-import "../utils/firebase-config.js";
-import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { fetchApiThunk } from "../utils/store/blogSlice";
 
 const Body = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchApiThunk());
+    console.log("fetchApiThunk");
+  }, []);
   return (
     <>
       <Header />

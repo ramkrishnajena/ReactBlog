@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { allPosts, getPost } from "../services/createPost.service";
 import Post from "../components/Post";
-import { addAllPost, addPost } from "../utils/store/blogSlice";
 import { useDispatch, useSelector } from "react-redux";
 import Shimmer from "../components/Shimmer";
 import { filterData } from "../utils/utils";
@@ -9,34 +7,23 @@ import { filterData } from "../utils/utils";
 const PostContainer = () => {
   const [postList, setPostList] = useState([]);
   const [searchPost, setSearchPost] = useState([]);
-  const dispatch = useDispatch();
   const select = useSelector((data) => data);
 
   const handleSearch = (e) => {
     setSearchPost(filterData(e.target.value, postList));
   };
-  async function getAllPosts() {
-    try {
-      const posts = await allPosts();
-      const postData = posts.map((doc) => ({ ...doc.data(), id: doc.id }));
-      setPostList(postData);
-      setSearchPost(postData);
-      dispatch(addAllPost(postData));
-    } catch (err) {
-      console.log(err);
-    }
-  }
 
   useEffect(() => {
-    getAllPosts();
-  }, []);
+    setPostList(select.blogs.posts);
+    setSearchPost(select.blogs.posts);
+  }, [select]);
 
   return !postList.length ? (
     <div className='w-full h-full'>
       <div className='flex flex-wrap justify-center'>
         {Array(6)
           .fill("")
-          .map((data, i) => (
+          .map((_, i) => (
             <Shimmer key={i} />
           ))}
       </div>

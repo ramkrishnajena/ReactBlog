@@ -12,6 +12,7 @@ const userSlice = createSlice({
     },
     signOutUser: (state) => {
       state.user = { log: false };
+      state.users = [];
     },
   },
 });

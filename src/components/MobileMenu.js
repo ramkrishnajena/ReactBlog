@@ -53,7 +53,7 @@ const MobileMenu = () => {
                   className='hover:underline mt-5 uppercase'
                   onClick={() => {
                     dispatch(menuState(false));
-                    handleLogout;
+                    handleLogout();
                   }}
                 >
                   Logout

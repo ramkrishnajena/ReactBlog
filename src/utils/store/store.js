@@ -8,6 +8,7 @@ const store = configureStore({
     blogs: blogSlice,
     users: userSlice,
   },
+  //this one is to hide the redux in production
   devTools: isDevelopment,
 });
 

@@ -1,20 +1,41 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { allPosts } from "../../services/createPost.service";
+import { useDispatch } from "react-redux";
+
+export const fetchApiThunk = createAsyncThunk("blogs/posts", async () => {
+  const data = await allPosts();
+  const postData = await data.map((doc) => ({ ...doc.data(), id: doc.id }));
+  return postData;
+});
 
 const blogSlice = createSlice({
   name: "posts",
   initialState: {
     posts: [],
     menu: false,
+    status: "idle",
   },
   reducers: {
     addAllPost: (state, action) => {
-      state.posts = action.payload;
+      // state.posts = action.payload;
     },
     deletePost: (state, action) => {},
     updatePost: (state, action) => {},
     menuState: (state, action) => {
       state.menu = action.payload;
     },
+  },
+  extraReducers: (builder) => {
+    builder.addCase(fetchApiThunk.fulfilled, (state, action) => {
+      state.posts = action.payload;
+      state.status = "success";
+    });
+    builder.addCase(fetchApiThunk.pending, (state, action) => {
+      state.status = "pending";
+    });
+    builder.addCase(fetchApiThunk.rejected, (state, action) => {
+      state.status = "rejected";
+    });
   },
 });
 
