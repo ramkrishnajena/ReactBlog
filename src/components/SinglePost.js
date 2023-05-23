@@ -33,7 +33,12 @@ const SinglePost = () => {
             <h2 className='text-2xl pb-5 font-bold font-roboto'>
               {data.title}
             </h2>
-            <img src={data.image} alt={data.title} className='w-2/3' />
+            <img
+              src={data.image}
+              alt={data.title}
+              className='w-2/3'
+              loading='lazy'
+            />
             <div
               className='lg:w-2/3 pt-5 flex flex-col gap-y-2'
               dangerouslySetInnerHTML={{ __html: md.render(data.content) }}

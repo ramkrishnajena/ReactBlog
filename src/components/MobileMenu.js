@@ -40,7 +40,7 @@ const MobileMenu = () => {
           </Link>
           {store.users.user.log ? (
             <>
-              <Link to='dashboard'>
+              <Link to='admin'>
                 <li
                   className='hover:underline'
                   onClick={() => dispatch(menuState(false))}

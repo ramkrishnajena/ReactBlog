@@ -22,7 +22,6 @@ const BlogEditor = () => {
   });
   const [message, setMessage] = useState();
   const url = useParams();
-  console.log(post);
 
   const editPost = async (url) => {
     const postData = (await getPost(url)).data();

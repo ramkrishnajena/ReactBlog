@@ -17,7 +17,6 @@ const Signup = () => {
   const handleChange = (e) => {
     const name = e.target.name;
     const value = e.target.value;
-    console.log(signUpDetails);
     setSignUpDetails((data) => ({
       ...data,
       [name]: value,
@@ -34,7 +33,6 @@ const Signup = () => {
     try {
       await addUser(signUpDetails);
       setSignUp(true);
-      console.log(signUpDetails);
     } catch (err) {
       console.log(err);
     }
