@@ -5,12 +5,15 @@ import {
   getPost,
   updatePost,
 } from "../../services/createPost.service";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { addAllPost, fetchApiThunk } from "../../utils/store/blogSlice";
 
 const BlogEditor = () => {
   const user = useSelector((data) => data.users.user);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [post, setPost] = useState({
     title: "",
     description: "",
@@ -67,49 +70,61 @@ const BlogEditor = () => {
   };
   useEffect(() => {
     url.id && editPost(url.id);
+    return () => {
+      dispatch(fetchApiThunk())
+      console.log("first")
+    };
   }, []);
 
+  useEffect(() => {
+    dispatch(fetchApiThunk())
+  }, [message]);
+
   return (
-    <div className='w-full h-4/5 flex flex-col items-center'>
-      <p className='text-xl animate-pulse bold text-primary'>{message}</p>
-      <form className='w-2/3'>
+    <div className="w-full h-4/5 flex flex-col items-center">
+      <p className="text-xl animate-pulse bold text-primary">{message}</p>
+      <form className="w-2/3">
+        <p>Title</p>
         <input
-          type='text'
-          name='title'
+          type="text"
+          name="title"
           value={post.title}
           onChange={handleChange}
-          className='w-full h-8 my-2 bg-transparent text-sm pl-2 border border-slate-300 rounded-md focus:outline-none'
+          className="w-full h-8 mb-2 bg-transparent text-sm pl-2 border border-slate-300 rounded-md focus:outline-none"
         />
+        <p>Description</p>
         <input
-          type='text'
-          name='description'
+          type="text"
+          name="description"
           value={post.description}
           onChange={handleChange}
-          className='w-full h-8 my-2 bg-transparent text-sm pl-2 border border-slate-300 rounded-md focus:outline-none '
+          className="w-full h-8 mb-2 bg-transparent text-sm pl-2 border border-slate-300 rounded-md focus:outline-none "
         />
+        <p>Post Image Url</p>
         <input
-          type='text'
-          name='image'
+          type="text"
+          name="image"
           value={post.image}
           onChange={handleChange}
-          className='w-full h-8 my-2 bg-transparent text-sm pl-2 border border-slate-300 rounded-md focus:outline-none '
+          className="w-full h-8 mb-2 bg-transparent text-sm pl-2 border border-slate-300 rounded-md focus:outline-none "
         />
+        <p>Content</p>
         <textarea
-          type='text'
-          name='content'
+          type="text"
+          name="content"
           value={post.content}
           onChange={handleChange}
-          className='w-full h-60 my-2 bg-transparent text-sm pl-2 border border-slate-300 rounded-md focus:outline-none '
+          className="w-full h-60 mb-2 bg-transparent text-sm pl-2 border border-slate-300 rounded-md focus:outline-none "
         />
 
         <button
-          className='w-40 h-10 mt-3 font-roboto text-white bg-primary border rounded-md'
+          className="w-40 h-10 mt-3 font-roboto text-white bg-primary border rounded-md"
           onClick={publishPost}
         >
           {!url.id ? "Publish" : "Update"}
         </button>
         <button
-          className='w-40 h-10 mt-3 font-roboto text-white bg-primary border rounded-md'
+          className="w-40 h-10 mt-3 font-roboto text-white bg-primary border rounded-md"
           onClick={draftPost}
         >
           Draft

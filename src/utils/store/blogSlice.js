@@ -17,9 +17,11 @@ const blogSlice = createSlice({
   },
   reducers: {
     addAllPost: (state, action) => {
-      // state.posts = action.payload;
+     fetchApiThunk()
     },
-    deletePost: (state, action) => {},
+    deleteAPost: (state, action) => {
+      state.posts.splice(action.payload,1)
+    },
     updatePost: (state, action) => {},
     menuState: (state, action) => {
       state.menu = action.payload;
@@ -39,6 +41,6 @@ const blogSlice = createSlice({
   },
 });
 
-export const { addAllPost, deletePost, updatePost, menuState } =
+export const { addAllPost, deleteAPost, updatePost, menuState } =
   blogSlice.actions;
 export default blogSlice.reducer;

@@ -9,7 +9,7 @@ const store = configureStore({
     users: userSlice,
   },
   //this one is to hide the redux in production
-  devTools: isDevelopment,
+  devTools:isDevelopment,
 });
 
 export default store;

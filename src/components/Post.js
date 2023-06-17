@@ -1,8 +1,10 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { deletePost } from "../services/createPost.service";
 import { Link } from "react-router-dom";
 import rightArrow from "../assets/right_arrow.svg";
+import { addAllPost,deleteAPost, fetchApiThunk } from "../utils/store/blogSlice";
+import { filterData, getIndex } from "../utils/utils";
 
 const Post = ({
   title,
@@ -13,11 +15,14 @@ const Post = ({
   published,
   id,
 }) => {
-  const isLoggedIn = useSelector((store) => store.users);
+  const {users:isLoggedIn,blogs }= useSelector((store) => store);
+  const dispatch= useDispatch()
   const accessLevel = isLoggedIn?.user?.userData;
   const removePost = async (id) => {
     try {
       const del = await deletePost(id);
+     const postIndex= getIndex(id,blogs.posts);
+        dispatch(deleteAPost(postIndex))
     } catch (err) {
       console.log(err);
     }

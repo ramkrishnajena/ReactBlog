@@ -9,7 +9,6 @@ const Body = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchApiThunk());
-    console.log("fetchApiThunk");
   }, []);
   return (
     <>

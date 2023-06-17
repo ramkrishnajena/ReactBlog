@@ -13,7 +13,7 @@ import Shimmer from "./components/Shimmer";
 
 const Dashboard = lazy(() => import("./components/admin/Dashboard"));
 const BlogEditor = lazy(() => import("./components/admin/BlogEditor"));
-
+console.log(process.env.apiKey);
 const BodyRouter = createBrowserRouter(
   [
     {
